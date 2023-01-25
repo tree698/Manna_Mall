@@ -1,5 +1,13 @@
+import { Outlet } from 'react-router-dom';
+import Navbar from './components/Navbar';
+
 function App() {
-  return <h1>Tropical Fruits Mall</h1>;
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
 }
 
 export default App;
