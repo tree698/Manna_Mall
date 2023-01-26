@@ -1,7 +1,7 @@
 import React from 'react';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import { useAuthContext } from './context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 // import { login, logout, onAuthChange } from '../service/auth';
 import Button from './ui/Button';
 import User from './User';
