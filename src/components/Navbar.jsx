@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { RiShoppingBagLine } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { login, logout, onAuthChange } from '../service/auth';
+import Button from './ui/Button';
 import User from './User';
 
 export default function Navbar() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    onAuthChange(setUser);
+    onAuthChange((user) => {
+      // console.log(user);
+      setUser(user);
+    });
   }, []);
 
   return (
@@ -19,12 +23,12 @@ export default function Navbar() {
       </Link>
       <nav className="flex items-center gap-6 font-semibold">
         <Link to="/products">모든 상품</Link>
-        <Link to="/carts">내 카트</Link>
-        <Link to="/products/new">새 상품</Link>
+        {user && <Link to="/carts">내 카트</Link>}
+        {user && user.isAdmin && <Link to="/products/new">관리자</Link>}
 
-        {!user && <button onClick={login}>로그인</button>}
         {user && <User user={user} />}
-        {user && <button onClick={logout}>로그아웃</button>}
+        {!user && <Button text={'로그인'} onClick={login} />}
+        {user && <Button text={'로그아웃'} onClick={logout} />}
       </nav>
     </header>
   );

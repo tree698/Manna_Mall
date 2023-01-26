@@ -5,10 +5,12 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
+import { getDatabase, onValue, ref, get } from 'firebase/database';
 import { app } from './firebase';
 
-const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
+const database = getDatabase(app);
+const provider = new GoogleAuthProvider();
 
 export function login() {
   signInWithPopup(auth, provider).catch(console.error);
@@ -19,5 +21,30 @@ export function logout() {
 }
 
 export function onAuthChange(onUserChange) {
-  onAuthStateChanged(auth, (user) => onUserChange(user));
+  onAuthStateChanged(auth, async (user) => {
+    const updatedUser = user ? await adminUser(user) : null;
+    onUserChange(updatedUser);
+  });
+}
+
+// async function adminUser(user) {
+//   return onValue(ref(database, 'admins'), (snapshot) => {
+//     const data = snapshot.val();
+//     if (data === user.uid) {
+//       return { ...user, isAdmin: true };
+//     }
+//     return user;
+//   });
+// }
+async function adminUser(user) {
+  return get(ref(database, 'admins')) //
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const admins = snapshot.val();
+        //admins는 배열로 되어 있음
+        const isAdmin = admins.includes(user.uid);
+        return { ...user, isAdmin };
+      }
+      return user;
+    });
 }

@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@firebase/app", "npm:0.9.1"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:1afa2cfbae5ceeec17ca9fc287f495e8ad6cb63ce57b73c716e27e7a4fd27fcda8182faf50f8a6a6b345c71c1cf3444fb9e7253fda6cbe6601fa8aedc29607ad#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:1afa2cfbae5ceeec17ca9fc287f495e8ad6cb63ce57b73c716e27e7a4fd27fcda8182faf50f8a6a6b345c71c1cf3444fb9e7253fda6cbe6601fa8aedc29607ad#npm:13.5.0"],\
@@ -17629,6 +17630,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["tropical_fruits_mall", "workspace:."],\
+            ["@firebase/app", "npm:0.9.1"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:1afa2cfbae5ceeec17ca9fc287f495e8ad6cb63ce57b73c716e27e7a4fd27fcda8182faf50f8a6a6b345c71c1cf3444fb9e7253fda6cbe6601fa8aedc29607ad#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:1afa2cfbae5ceeec17ca9fc287f495e8ad6cb63ce57b73c716e27e7a4fd27fcda8182faf50f8a6a6b345c71c1cf3444fb9e7253fda6cbe6601fa8aedc29607ad#npm:13.5.0"],\
