@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { RiShoppingBagLine } from 'react-icons/ri';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuthContext } from './context/AuthContext';
 // import { login, logout, onAuthChange } from '../service/auth';
 import Button from './ui/Button';

@@ -5,7 +5,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { getDatabase, onValue, ref, get } from 'firebase/database';
+import { getDatabase, ref, get } from 'firebase/database';
 import { app } from './firebase';
 
 const auth = getAuth(app);
