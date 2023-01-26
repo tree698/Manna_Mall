@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
+import { login, logout, onAuthChange } from '../service/auth';
+import User from './User';
 
 export default function Navbar() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    onAuthChange(setUser);
+  }, []);
+
   return (
     <header className="flex justify-between border-b border-gray-300 p-3">
       <Link to="/" className="flex items-center text-4xl text-brand">
@@ -13,7 +21,10 @@ export default function Navbar() {
         <Link to="/products">모든 상품</Link>
         <Link to="/carts">내 카트</Link>
         <Link to="/products/new">새 상품</Link>
-        <button>로그인</button>
+
+        {!user && <button onClick={login}>로그인</button>}
+        {user && <User user={user} />}
+        {user && <button onClick={logout}>로그아웃</button>}
       </nav>
     </header>
   );
