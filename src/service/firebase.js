@@ -6,7 +6,8 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { getDatabase, ref, get } from 'firebase/database';
+import { getDatabase, ref, get, set } from 'firebase/database';
+import { v4 as uuid } from 'uuid';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
@@ -24,15 +25,15 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 const provider = new GoogleAuthProvider();
 
-export function login() {
+export async function login() {
   signInWithPopup(auth, provider).catch(console.error);
 }
 
-export function logout() {
+export async function logout() {
   signOut(auth).catch(console.error);
 }
 
-export function onAuthChange(onUserChange) {
+export async function onAuthChange(onUserChange) {
   onAuthStateChanged(auth, async (user) => {
     const updatedUser = user ? await adminUser(user) : null;
     onUserChange(updatedUser);
@@ -59,4 +60,15 @@ async function adminUser(user) {
       }
       return user;
     });
+}
+
+export async function addNewProduct(product, image) {
+  const id = uuid();
+  set(ref(database, `products/${id}`), {
+    ...product,
+    id,
+    image,
+    price: parseInt(product.price),
+    option: product.option.split('.'),
+  });
 }
