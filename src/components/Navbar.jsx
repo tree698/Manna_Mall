@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { Link, useParams } from 'react-router-dom';
-import { login, logout, onAuthChange } from '../service/auth';
+import { useAuthContext } from './context/AuthContext';
+// import { login, logout, onAuthChange } from '../service/auth';
 import Button from './ui/Button';
 import User from './User';
 
 export default function Navbar() {
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    onAuthChange((user) => {
-      // console.log(user);
-      setUser(user);
-    });
-  }, []);
+  const { user, login, logout } = useAuthContext();
 
   return (
     <header className="flex justify-between border-b border-gray-300 p-3">
