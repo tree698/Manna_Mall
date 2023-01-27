@@ -3056,6 +3056,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:4.22.4":
+  version: 4.22.4
+  resolution: "@tanstack/query-core@npm:4.22.4"
+  checksum: 01663a36ad7ed5c43cb7cfa8ffcdf7df4de05cf68e9991bbc339be2a656a1c94f69e0b5405dfa972cf877b09dac3cba4cbdf8c91f5dffabc46ac32ec0ce5f4bb
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "@tanstack/react-query@npm:4.23.0"
+  dependencies:
+    "@tanstack/query-core": 4.22.4
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 166140855f8806e951e9a4ebccb5ba354eb2abc314e6b6ff696d2a1a8720e9ea868221f62d58004101e44899b61fdf57a40fe286bb13233645e292cd5567545c
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^8.5.0":
   version: 8.19.1
   resolution: "@testing-library/dom@npm:8.19.1"
@@ -12792,6 +12818,7 @@ __metadata:
   resolution: "tropical_fruits_mall@workspace:."
   dependencies:
     "@firebase/app": ^0.9.1
+    "@tanstack/react-query": ^4.23.0
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^13.2.1
@@ -13063,6 +13090,15 @@ __metadata:
     querystringify: ^2.1.1
     requires-port: ^1.0.0
   checksum: fbdba6b1d83336aca2216bbdc38ba658d9cfb8fc7f665eb8b17852de638ff7d1a162c198a8e4ed66001ddbf6c9888d41e4798912c62b4fd777a31657989f7bdf
+  languageName: node
+  linkType: hard
+
+"use-sync-external-store@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "use-sync-external-store@npm:1.2.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 5c639e0f8da3521d605f59ce5be9e094ca772bd44a4ce7322b055a6f58eeed8dda3c94cabd90c7a41fb6fa852210092008afe48f7038792fd47501f33299116a
   languageName: node
   linkType: hard
 
