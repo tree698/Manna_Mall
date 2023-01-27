@@ -6,10 +6,28 @@ import { uploadImage } from '../service/uploader';
 export default function NewProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
+  const [isUploading, setIsUploading] = useState(false);
+  const [success, setSuccess] = useState();
 
+  // {} & () => {} 주의
   const handleSubmit = (e) => {
     e.preventDefault();
-    uploadImage(file).then((url) => addNewProduct(product, url));
+    setIsUploading(true);
+    uploadImage(file)
+      .then((url) => {
+        addNewProduct(product, url) //
+          .then(() => {
+            setSuccess('상품이 성공적으로 추가되었습니다');
+            setTimeout(() => {
+              setSuccess(null);
+            }, 4000);
+          });
+      })
+      .finally(() => {
+        setIsUploading(false);
+        setProduct({});
+        setFile();
+      });
   };
 
   const handleChange = (e) => {
@@ -22,9 +40,17 @@ export default function NewProduct() {
   };
 
   return (
-    <section>
-      {file && <img src={URL.createObjectURL(file)} alt="열대과일 이미지" />}
-      <form onSubmit={handleSubmit}>
+    <section className="w-full text-center">
+      <h2 className="text-2xl font-bold my-4">새 상품 등록하기</h2>
+      {success && <p className="my-2">✅ {success}</p>}
+      {file && (
+        <img
+          className="w-96 mx-auto mb-2"
+          src={URL.createObjectURL(file)}
+          alt="열대과일 이미지"
+        />
+      )}
+      <form className="flex flex-col px-20" onSubmit={handleSubmit}>
         <input
           type="file"
           accept="image/*"
@@ -72,7 +98,11 @@ export default function NewProduct() {
           onChange={handleChange}
           placeholder="옵션(콤마(,)로 구분)"
         />
-        <Button text={'상품 등록하기'} />
+        {/* disabled => isUploadingd이 true면 작동 못하도록... */}
+        <Button
+          text={isUploading ? '업로드 중...' : '상품 등록하기'}
+          disabled={isUploading}
+        />
       </form>
     </section>
   );
