@@ -5,6 +5,8 @@ import { useAuthContext } from '../context/AuthContext';
 import { addOrUpdateToCard } from '../service/firebase';
 
 export default function ProductDeatail() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState();
   const { uid } = useAuthContext();
   const {
     state: {
@@ -15,7 +17,12 @@ export default function ProductDeatail() {
   const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = () => {
     const products = { id, image, title, price, option: selected, quantity: 1 };
-    addOrUpdateToCard(uid, products);
+    setIsLoading(true);
+    addOrUpdateToCard(uid, products).finally(() => {
+      setIsLoading(false);
+      setSuccess('장바구니에 추가되었습니다.');
+      setTimeout(() => setSuccess(), 3000);
+    });
   };
 
   return (
@@ -49,7 +56,11 @@ export default function ProductDeatail() {
               ))}
           </select>
         </div>
-        <Button text="장바구니에 추가" onClick={handleClick} />
+        {success && <p>✅ {success}</p>}
+        <Button
+          text={isLoading ? '장바구니에 추가 중...' : '장바구니에 추가'}
+          onClick={handleClick}
+        />
       </div>
     </section>
   );
