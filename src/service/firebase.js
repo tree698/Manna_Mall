@@ -62,14 +62,15 @@ async function adminUser(user) {
     });
 }
 
+// return을 빼먹었다 + split에서 콤마인지 점인지???
 export async function addNewProduct(product, image) {
   const id = uuid();
-  set(ref(database, `products/${id}`), {
+  return set(ref(database, `products/${id}`), {
     ...product,
     id,
     image,
     price: parseInt(product.price),
-    option: product.option.split('.'),
+    option: product.option.split(','),
   });
 }
 
