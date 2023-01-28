@@ -6,7 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { getDatabase, ref, get, set } from 'firebase/database';
+import { getDatabase, ref, get, set, remove } from 'firebase/database';
 import { v4 as uuid } from 'uuid';
 
 const firebaseConfig = {
@@ -82,4 +82,22 @@ export async function getProducts() {
       }
       return [];
     });
+}
+
+export async function getCart(userId) {
+  return get(ref(database, `carts/${userId}`)) //
+    .then((snapshot) => {
+      const item = snapshot.val() || {};
+      return Object.values(item);
+    });
+}
+
+// product는 그냥 넣어 준다
+// 위에서는 ...으로 풀고 필요한 부분만 업데이트 후 {}로 묶어 준것임
+export async function addOrUpdateToCard(userId, product) {
+  return set(ref(database, `carts/${userId}/${product.id}`), product);
+}
+
+export async function removeFromCart(userId, productId) {
+  return remove(ref(database, `carts/${userId}/${productId}`));
 }
