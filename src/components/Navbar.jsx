@@ -5,6 +5,7 @@ import { useAuthContext } from '../context/AuthContext';
 // import { login, logout, onAuthChange } from '../service/auth';
 import Button from './ui/Button';
 import User from './User';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 export default function Navbar() {
   const { user, login, logout } = useAuthContext();
@@ -17,8 +18,12 @@ export default function Navbar() {
       </Link>
       <nav className="flex items-center gap-6 font-semibold">
         <Link to="/products">모든 상품</Link>
-        {user && <Link to="/carts">내 카트</Link>}
-        {user && user.isAdmin && <Link to="/products/new">관리자</Link>}
+        {user && (
+          <Link to="/carts" className="text-3xl">
+            <AiOutlineShoppingCart />
+          </Link>
+        )}
+        {user && user.isAdmin && <Link to="/products/new">대시보드</Link>}
 
         {user && <User user={user} />}
         {!user && <Button text={'로그인'} onClick={login} />}

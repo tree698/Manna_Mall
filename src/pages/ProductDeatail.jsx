@@ -18,7 +18,7 @@ export default function ProductDeatail() {
       <div className="w-full basis-5/12 flex flex-col p-4">
         <p className="text-3xl font-bold py-2">{title}</p>
         <p className="text-2xl font-bold py-2 border-b border-gray-400">
-          {price}원
+          💁‍♀️ 1개: {price}원
         </p>
         <p className="py-4 text-lg">{description}</p>
         <div className="flex items-center">
@@ -33,7 +33,7 @@ export default function ProductDeatail() {
             className="p-2 m-4 flex-1 border-2 border-gray-200 rounded-md outline-none"
           >
             <option value="" className="text-center">
-              ---- 수량을 선택하세요 ----
+              ---- 어떻게 포장해 드릴까요? ----
             </option>
             {option &&
               option.map((o, index) => (

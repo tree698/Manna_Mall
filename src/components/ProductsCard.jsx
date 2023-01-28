@@ -17,7 +17,9 @@ export default function ProductsCard({
       <img className="w-full" src={image} alt={title} />
       <div className="p-3 text-center ">
         <p className="text-xl font-semibold">{title}</p>
-        <p className="text-2xl my-2">{price}원</p>
+        <p className="text-2xl my-2">
+          {price}원, <span className="text-base text-gray-500">1개</span>{' '}
+        </p>
         <p className=" text-sm truncate px-2 text-gray-500">{description}</p>
       </div>
     </li>
