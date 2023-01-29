@@ -40,21 +40,11 @@ export async function onAuthChange(onUserChange) {
   });
 }
 
-// async function adminUser(user) {
-//   return onValue(ref(database, 'admins'), (snapshot) => {
-//     const data = snapshot.val();
-//     if (data === user.uid) {
-//       return { ...user, isAdmin: true };
-//     }
-//     return user;
-//   });
-// }
 async function adminUser(user) {
   return get(ref(database, 'admins')) //
     .then((snapshot) => {
       if (snapshot.exists()) {
         const admins = snapshot.val();
-        //admins는 배열로 되어 있음
         const isAdmin = admins.includes(user.uid);
         return { ...user, isAdmin };
       }

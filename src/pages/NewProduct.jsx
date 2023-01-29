@@ -10,7 +10,6 @@ export default function NewProduct() {
   const [success, setSuccess] = useState();
   const { addProduct } = useProducts();
 
-  // {} & () => {} 주의
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsUploading(true);
@@ -103,7 +102,6 @@ export default function NewProduct() {
           onChange={handleChange}
           placeholder="옵션(콤마(,)로 구분)"
         />
-        {/* disabled => isUploadingd이 true면 작동 못하도록... */}
         <Button
           text={isUploading ? '업로드 중...' : '상품 등록하기'}
           disabled={isUploading}

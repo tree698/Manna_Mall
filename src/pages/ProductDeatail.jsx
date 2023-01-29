@@ -1,27 +1,34 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../components/ui/Button';
-import { useAuthContext } from '../context/AuthContext';
-import { addOrUpdateToCard } from '../service/firebase';
+import useCart from '../hooks/useCart';
 
 export default function ProductDeatail() {
+  const { addOrUpdateItem } = useCart();
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState();
-  const { uid } = useAuthContext();
   const {
     state: {
       product: { id, image, title, price, description, option },
     },
   } = useLocation();
   const [selected, setSelected] = useState();
+  const [optionSelect, setOptionSelect] = useState();
   const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = () => {
+    if (selected == null) {
+      setOptionSelect('옵션을 선택해 주세요 😅');
+      return;
+    }
+    setOptionSelect('');
     const products = { id, image, title, price, option: selected, quantity: 1 };
     setIsLoading(true);
-    addOrUpdateToCard(uid, products).finally(() => {
-      setIsLoading(false);
-      setSuccess('장바구니에 추가되었습니다.');
-      setTimeout(() => setSuccess(), 3000);
+    addOrUpdateItem.mutate(products, {
+      onSuccess: () => {
+        setIsLoading(false);
+        setSuccess('장바구니에 추가되었습니다.');
+        setTimeout(() => setSuccess(), 3000);
+      },
     });
   };
 
@@ -56,7 +63,8 @@ export default function ProductDeatail() {
               ))}
           </select>
         </div>
-        {success && <p>✅ {success}</p>}
+        {success && <p className="my-2">✅ {success}</p>}
+        {optionSelect && <p className="my-2"> {optionSelect}</p>}
         <Button
           text={isLoading ? '장바구니에 추가 중...' : '장바구니에 추가'}
           onClick={handleClick}

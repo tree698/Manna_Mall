@@ -3,7 +3,6 @@ import { RiShoppingBagLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import CartStatus from './CartStatus';
-// import { login, logout, onAuthChange } from '../service/auth';
 import Button from './ui/Button';
 import User from './User';
 
@@ -23,8 +22,7 @@ export default function Navbar() {
             <CartStatus />
           </Link>
         )}
-        {user && user.isAdmin && <Link to="/products/new">대시보드</Link>}
-
+        {user && user.isAdmin && <Link to="/products/new">관리자</Link>}
         {user && <User user={user} />}
         {!user && <Button text={'로그인'} onClick={login} />}
         {user && <Button text={'로그아웃'} onClick={logout} />}
