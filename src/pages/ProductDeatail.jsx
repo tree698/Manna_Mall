@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../components/ui/Button';
+import { useAuthContext } from '../context/AuthContext';
 import useCart from '../hooks/useCart';
 
 export default function ProductDeatail() {
+  const { user } = useAuthContext();
   const { addOrUpdateItem } = useCart();
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState();
@@ -16,6 +18,11 @@ export default function ProductDeatail() {
   const [optionSelect, setOptionSelect] = useState();
   const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = () => {
+    if (user == null) {
+      alert('어라!!! 로그인이 필요해요~ 😅');
+      return;
+    }
+
     if (selected == null) {
       setOptionSelect('옵션을 선택해 주세요 😅');
       return;
