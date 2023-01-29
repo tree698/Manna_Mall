@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# 맛나 몰 - 열대과일 온라인 쇼핑몰
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## :cherries:&nbsp; 소개
+- 리액트를 사용하여 열대과일 온라인 쇼핑몰 구현
+- [Firebase](https://firebase.google.com/?hl=ko)와 [Cloudinary](https://cloudinary.com/)를 사용하여 백앤드 구현
 
-## Available Scripts
+## :cherries:&nbsp; 스택
+![HTML](https://img.shields.io/badge/-HTML5-F05032?style=flate&logo=html5&logoColor=ffffff)
+![JavaScript](https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=flate&logo=javascript&logoColor=000000&labelColor=%23F7DF1C&color=%23F7DF1C)
+![React](https://img.shields.io/badge/-React-007ACC?style=flat&logo=React)
+![TailwindCSS](https://img.shields.io/badge/-Tailwind_CSS-lightgrey?style=flat&logo=TailwindCSS) <br/>
+![ReactRouter](https://img.shields.io/badge/-React_Router-yellowgreen?style=flat&logo=ReactRouter)
+![TanStack_Query](https://img.shields.io/badge/-TanStack_Query-orange?style=flat&logo=TanStack_Query)
+![uuid](https://img.shields.io/badge/-uuid-blueviolet?style=flat&logo=uuid) 
 
-In the project directory, you can run:
+## :cherries:&nbsp; 주요 특징
+- [Firebase](https://firebase.google.com/?hl=ko)를 사용하여 Authentication과 Realtime Database 구현
+- [Cloudinary](https://cloudinary.com/)를 사용하여 이미지 업로드 및 저장 구현
+- 리액트 고급 기능 중, Context 사용
+- React Router로 라우터 기능 구현
+- TanStack Query를 사용하여 데이터베이스에서 가져온 데이터의 상태관리 구현
 
-### `yarn start`
+## :cherries:&nbsp; 주요 기능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+|**구분**|**기능 및 특징**|
+|--|--|
+|인증|- 일반 사용자는 구글 이메일 계정으로 로그인 기능<br/> - 관리자 로그인 기능   |
+|관리자 모드|- 상품 업로드 기능|
+|상품|- 전체 상품 배열<br/> - 상품 상세 페이지 제공|
+|장바구니|- 상품을 장바구니에 추가 기능<br/>- 내 장바구니 페이지 제공|
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## :cherries:&nbsp; 배포
+- [https://manna-mall698.netlify.app](https://manna-mall698.netlify.app)
 
-### `yarn test`
+## :cherries:&nbsp; 데모
+|**스크린 샷**|
+|:--:|
+|<img width="600" alt="screenshot" src="https://user-images.githubusercontent.com/53497516/215316916-9d4a37f2-3823-493b-9517-08ec40900f1f.png">|
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/><br/>
 
-### `yarn build`
+|**로그인, 상품 선택, 장바구니에 추가 등**|
+|:--:|
+|<img width="600" alt="screenshot" src="https://user-images.githubusercontent.com/53497516/215317839-e303af06-0aa6-4d0b-bc0a-f74aee954b16.gif">|
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/><br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+|**관리자 모드 - 상품 업로드**|
+|:--:|
+|<img width="600" alt="screenshot" src="https://user-images.githubusercontent.com/53497516/215318458-7c768a80-3183-4df9-843e-3af8519ed81c.gif">|
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
